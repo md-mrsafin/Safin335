@@ -3,118 +3,121 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Modern Portfolio</title>
+<title>Portfolio</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-  body {
+  * {
     margin: 0;
-    font-family: Arial;
-    background: #0f172a;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    background: radial-gradient(circle at top, #1e293b, #0f172a);
     color: #e2e8f0;
-    transition: 0.3s;
+    line-height: 1.6;
   }
 
-  body.light {
-    background: #f8fafc;
-    color: #0f172a;
-  }
-
-  header {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-  }
-
+  /* NAV */
   nav {
     position: sticky;
     top: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     padding: 15px;
-    background: #111827;
-    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   nav a {
-    color: inherit;
+    color: #94a3b8;
     text-decoration: none;
-    padding: 6px 10px;
+    transition: 0.3s;
+    font-weight: 500;
   }
 
-  nav a.active {
-    border-bottom: 2px solid #38bdf8;
+  nav a:hover {
+    color: #38bdf8;
   }
 
+  /* HERO */
+  header {
+    text-align: center;
+    padding: 120px 20px 80px;
+  }
+
+  header h1 {
+    font-size: 48px;
+    font-weight: 800;
+  }
+
+  header p {
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 18px;
+  }
+
+  .btn {
+    margin-top: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* SECTIONS */
   section {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
     padding: 60px 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.6s;
   }
 
-  section.show {
-    opacity: 1;
-    transform: translateY(0);
+  h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #38bdf8;
   }
 
+  /* CARDS */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
   }
 
   .card {
-    padding: 15px;
-    border-radius: 10px;
-    background: #1e293b;
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 14px;
     transition: 0.3s;
-  }
-
-  body.light .card {
-    background: #e2e8f0;
+    backdrop-filter: blur(10px);
   }
 
   .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    border-color: #38bdf8;
   }
 
-  button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-
-  .toggle {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    background: #38bdf8;
-  }
-
-  #topBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background: #38bdf8;
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
   }
 </style>
 </head>
 
 <body>
-
-<button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
-<button id="topBtn" onclick="topFunction()">Top</button>
-
-<header>
-  <h1>My Portfolio</h1>
-  <p>Student • Developer • Learner</p>
-</header>
 
 <nav>
   <a href="#about">About</a>
@@ -122,71 +125,51 @@
   <a href="#contact">Contact</a>
 </nav>
 
+<header>
+  <h1>Your Name</h1>
+  <p>Student • Developer • Research Enthusiast</p>
+  <button class="btn">Download CV</button>
+</header>
+
 <section id="about">
   <h2>About Me</h2>
-  <p>I build small projects and learn web development.</p>
+  <p>
+    I am a student passionate about web development, research,
+    and building real-world projects.
+  </p>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-
-  <button onclick="filterProjects('all')">All</button>
-  <button onclick="filterProjects('web')">Web</button>
-  <button onclick="filterProjects('app')">App</button>
-
   <div class="grid">
-    <div class="card project web">Portfolio Website</div>
-    <div class="card project app">Todo App</div>
-    <div class="card project web">Blog Site</div>
+    <div class="card">
+      <h3>Portfolio Website</h3>
+      <p>Clean personal portfolio using HTML/CSS/JS.</p>
+    </div>
+
+    <div class="card">
+      <h3>Todo App</h3>
+      <p>Task manager with local storage.</p>
+    </div>
+
+    <div class="card">
+      <h3>Weather App</h3>
+      <p>Live weather using API.</p>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: example@mail.com</p>
+  <div class="card">
+    <p>Email: example@mail.com</p>
+    <p>GitHub: github.com/username</p>
+  </div>
 </section>
 
-<script>
-  // Theme toggle
-  function toggleTheme() {
-    document.body.classList.toggle("light");
-  }
-
-  // Scroll reveal
-  const sections = document.querySelectorAll("section");
-
-  window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-      const top = sec.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        sec.classList.add("show");
-      }
-    });
-
-    document.getElementById("topBtn").style.display =
-      window.scrollY > 300 ? "block" : "none";
-  });
-
-  // Back to top
-  function topFunction() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // Project filter
-  function filterProjects(type) {
-    let items = document.querySelectorAll(".project");
-
-    items.forEach(item => {
-      if (type === "all") {
-        item.style.display = "block";
-      } else {
-        item.style.display = item.classList.contains(type)
-          ? "block"
-          : "none";
-      }
-    });
-  }
-</script>
+<footer>
+  © 2026 Your Name — Built with simplicity
+</footer>
 
 </body>
 </html>
